@@ -4,7 +4,7 @@
   "description": "Trivia application is written with React and ES6",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --content-base src --inline --hot"
+    "start": "webpack && start http://localhost:8080/ && webpack-dev-server --inline --hot --quiet --display-error-details && nodemon --watch src --watch data.js"
   },
   "author": "Kranthi",
   "license": "Free",
@@ -17,5 +17,8 @@
     "react-dom": "^15.3.0",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.16.5"
+  },
+  "dependencies": {
+    "nodemon": "^1.14.7"
   }
 }
