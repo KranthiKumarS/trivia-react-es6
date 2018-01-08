@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Card from './global/Card';
+import Card from './src/Components/Card';
 import Headers from './global/Headers';
 import request from './global/request';
+import triviaData from './src/data/triviaData';
 
 export default class App extends React.Component {
 
@@ -26,12 +27,13 @@ export default class App extends React.Component {
     componentDidMount() {
         window.addEventListener('resize', this.handleResize.bind(this));
         let rows = 0;
-        data.forEach(category => {
+        console.log(triviaData.data);
+        triviaData.DATA.forEach(category => {
             if (category.questions.length > rows) {
                 rows = category.questions.length;
             }
         });
-        this.setState({data: data, rows: rows, cols: data.length});
+        this.setState({data: triviaData.DATA, rows: rows, cols: triviaData.DATA.length});
     }
 
     /*

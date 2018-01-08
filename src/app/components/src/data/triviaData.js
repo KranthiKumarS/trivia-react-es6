@@ -1,4 +1,4 @@
-var data = [
+exports.DATA = [
   {
     "category": "HTML",
     "questions": [
