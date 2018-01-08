@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Card from './Card';
-import Headers from './Headers';
-import request from './request';
+import Card from './global/Card';
+import Headers from './global/Headers';
+import request from './global/request';
 
-class App extends React.Component {
+export default class App extends React.Component {
 
     constructor(props) {
         super(props);
@@ -77,5 +77,3 @@ class App extends React.Component {
     }
 
 };
-
-ReactDOM.render(<App/>, document.getElementById('app'));

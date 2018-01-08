@@ -85,7 +85,7 @@ var data = [
       {
         "points": 200,
         "question": "What are the colors of the olympic rings?",
-        "answer": "<img src='assets/img/olympic_rings.png'/>"
+        "answer": "<img src='images/olympic_rings.png'/>"
       },
       {
         "points": 300,

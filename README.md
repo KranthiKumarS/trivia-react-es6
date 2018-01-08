@@ -8,10 +8,10 @@ Trivia application is written with React and ES6
 
 2. Install the dependencies
     ``` 
-    npm install
+    yarn
     ```
 
 3. Build the app
     ```
-    npm start	
+    yarn start	
     ```
