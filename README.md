@@ -13,5 +13,5 @@ Trivia application is written with React and ES6
 
 3. Build the app
     ```
-    yarn start	
+    gulp
     ```
