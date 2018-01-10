@@ -48,7 +48,7 @@ p {
     transform: translate3d(0, 0, 0) !important;
     width: 100% !important; /* full screen overriding absolute width */
     height: 100% !important;  /* full screen overriding absolute height */
-    z-index: 100;
+    z-index: 101;
 }
 
 .flipper.flipped .card {
@@ -123,7 +123,8 @@ p {
 }
 
 .front>img {
-    //width: 100%;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .back img {

@@ -5,7 +5,7 @@ class Card extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {view: 'points', completed: false};
+        this.state = {view: 'points', completed: false, src: 'base/images/dyk.svg'};
     }
 
     clickHandler(event) {
@@ -16,13 +16,13 @@ class Card extends React.Component {
                     audio.play("countdown");
                 }
             }, 1800);
-            this.setState({view: 'question', flipping: true});
+            this.setState({view: 'question', flipping: true, src: 'base/images/dyk.svg'});
         } else if (this.state.view === 'question') {
             audio.stop("countdown");
-            this.setState({view: 'answer'});
+            this.setState({view: 'answer', src: 'base/images/gtk.png'});
         } else {
             audio.play("flipBack");
-            this.setState({view: 'points', completed: true, flipping: true});
+            this.setState({view: 'points', completed: true, flipping: true, src:'base/images/gtk.png'});
         }
     }
 
@@ -43,7 +43,7 @@ class Card extends React.Component {
                 transform: 'translate3d(' + this.props.left + 'px,' + this.props.top + 'px,0)',
                 WebkitTransform: 'translate3d(' + this.props.left + 'px,' + this.props.top + 'px,0)'
             },
-            front = this.state.completed ? <img src='base/images/react.svg'/> : <span className='points'>{this.props.question.points}</span>,
+            front = this.state.completed ? <img src='base/images/gtk.png'/> : <span className='points'>{this.props.question.points}</span>,
             className = 'flipper';
 
         if (this.state.view !== 'points') {
@@ -60,7 +60,7 @@ class Card extends React.Component {
                     </div>
                     <div className='back'>
                         <span dangerouslySetInnerHTML={this.getLabelBack()}/>
-                        <img src='base/images/react.svg'/>
+                        <img src={this.state.src}/>
                     </div>
                 </div>
             </div>
