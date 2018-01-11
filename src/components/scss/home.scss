@@ -9,7 +9,15 @@ body {
 p {
     margin: 0;
 }
-
+.text-left {
+    text-align: left;
+}
+.text-right {
+    text-align: right;
+}
+.text-center {
+    text-align: center;
+}
 .headers {
     position: absolute;
     color: #FFFFFF;
@@ -120,7 +128,7 @@ p {
 
 
 .flipper.flipped .back {
-    font-size: 60px;
+    // font-size: 60px;
 }
 
 .front>img {

@@ -5,24 +5,24 @@ exports.DATA = {
         category: 'HTML',
         questions: [
           {
-            points: 1000,
-            question: '<p>What part of your application does React focus on?</p><ol><li>The Model</li><li>The View</li><li>The Controller</li><li>All of the above</li></ol>',
-            answer: 'B. The View',
+            points: 100,
+            question: '<p>What are the new features provided in HTML5?</p>',
+            answer: '<div class="text-left"><h3>Some of the new features provided in HTML5 are:</h3>1. It provides support for local storage<br>2. New form controls, like calendar, date, time, email, url, search<br>3. &lt;canvas&gt; element is provided to facilitate 2D drawing<br>4. The &lt;video&gt; and &lt;audio&gt; elements are provided for media playback<br>5. New content-specific elements are provided. <b>For e.g.</b> &lt;article&gt;, &lt;header&gt;, &lt;footer&gt;, &lt;nav&gt;, &lt;section&gt;</div>',
           },
           {
             points: 200,
-            question: '_____ lets you create JavaScript objects using HTML syntax',
-            answer: 'JSX',
+            question: '_____ is the correct syntax for Doctype in HTML5?',
+            answer: '<! DOCTYPE>',
           },
           {
             points: 300,
-            question: 'What tool can you use to transpile JSX?',
-            answer: 'Babel',
+            question: 'Name 2 non-semantic elements',
+            answer: '<div>, <span>',
           },
           {
             points: 400,
-            question: 'React uses a _____________ to limit direct manipulation of the DOM and improve performance',
-            answer: 'Virtual DOM',
+            question: 'Name 6 Block-level Elements',
+            answer: '<div>, <hr>, <table>, <li>, <ul>, <p>, <form>, <h1>-<h6>, <ol> ...',
           },
         ],
       },
@@ -31,8 +31,8 @@ exports.DATA = {
         questions: [
           {
             points: 100,
-            question: "<p>Where can you define a component's initial state when you use the ES6 Class syntax?</p><ol><li>getInitialState()</li><li>getInitialProps()</li><li>The component's constructor</li></ol>",
-            answer: "C. The component's constructor",
+            question: "How block elements can be centered with CSS?",
+            answer: "With margin properties.",
           },
           {
             points: 200,
@@ -46,8 +46,8 @@ exports.DATA = {
           },
           {
             points: 400,
-            question: 'Which lifecycle method is invoked once, immediately after the initial rendering occurs?',
-            answer: 'componentDidMount',
+            question: 'Name 3 limitations of CSS ',
+            answer: '1.Ascending by selectors is not possible <br>2.Limitations of vertical control <br>3.No expressions <br>4.No column declaration <br>5.Pseudo-class not controlled by dynamic behavior <br>6.Rules, styles, targeting specific text not possible ',
           },
         ],
       },
