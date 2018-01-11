@@ -23,17 +23,41 @@ export default class App extends React.Component {
         });
     }
 
+    today() {
+        let today = new Date(),
+            dd = today.getDate(),
+            mm = today.getMonth()+1, //January is 0!
+            yyyy = today.getFullYear();
+
+        if(dd<10){
+            dd='0'+dd;
+        } 
+        if(mm<10){
+            mm='0'+mm;
+        } 
+        today = dd+'/'+mm+'/'+yyyy;
+        return today;
+    }
 
     componentDidMount() {
         window.addEventListener('resize', this.handleResize.bind(this));
-        let rows = 0;
-        console.log(triviaData.data);
-        triviaData.DATA.forEach(category => {
-            if (category.questions.length > rows) {
-                rows = category.questions.length;
-            }
+        let rows = 0,
+        datenow = this.today();
+        triviaData.DATA.date.forEach(date => {
+            date[datenow].forEach(category => {
+                if (category.questions.length > rows) {
+                    rows = category.questions.length;
+                }
+            });
+            this.setState({data: date[datenow], rows: rows, cols: date[datenow].length});
         });
-        this.setState({data: triviaData.DATA, rows: rows, cols: triviaData.DATA.length});
+                
+        // triviaData.DATA.forEach(category => {
+        //     if (category.questions.length > rows) {
+        //         rows = category.questions.length;
+        //     }
+        // });
+        // this.setState({data: triviaData.DATA, rows: rows, cols: triviaData.DATA.length});
     }
 
     /*
@@ -43,13 +67,23 @@ export default class App extends React.Component {
         window.addEventListener('resize', this.handleResize.bind(this));
         request({url: "data.json"}).then(result => {
             let data = JSON.parse(result),
-                rows = 0;
-            data.forEach(category => {
-                if (category.questions.length > rows) {
-                    rows = category.questions.length;
-                }
+                rows = 0,
+                datenow = this.today();
+            data.forEach(date => {
+                date[datenow].forEach(category => {
+                    if (category.questions.length > rows) {
+                        rows = category.questions.length;
+                    }
+                });
+                this.setState({data: date[datenow], rows: rows, cols: date[datenow].length});
             });
-            this.setState({data: data, rows: rows, cols: data.length});
+
+            // data.forEach(category => {
+            //     if (category.questions.length > rows) {
+            //         rows = category.questions.length;
+            //     }
+            // });
+            // this.setState({data: data, rows: rows, cols: data.length});
         });
     }
     */
