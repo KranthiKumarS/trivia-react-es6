@@ -12,12 +12,12 @@ exports.DATA = {
           {
             points: 200,
             question: '_____ is the correct syntax for Doctype in HTML5?',
-            answer: '<! DOCTYPE>',
+            answer: '&lt;! DOCTYPE&gt;',
           },
           {
             points: 300,
             question: 'Name 2 non-semantic elements',
-            answer: '<div>, <span>',
+            answer: '&lt;div&gt;, &lt;span&gt;',
           },
           {
             points: 400,
@@ -31,12 +31,12 @@ exports.DATA = {
         questions: [
           {
             points: 100,
-            question: "How block elements can be centered with CSS?",
-            answer: "With margin properties.",
+            question: 'How block elements can be centered with CSS?',
+            answer: 'With margin properties.',
           },
           {
             points: 200,
-            question: "Using npm, which package should you require/import in addition to 'react' to render a React component in an existing DOM element of your HTML file?",
+            question: 'Using npm, which package should you require/import in addition to "react" to render a React component in an existing DOM element of your HTML file?',
             answer: 'react-dom',
           },
           {
@@ -47,12 +47,37 @@ exports.DATA = {
           {
             points: 400,
             question: 'Name 3 limitations of CSS ',
-            answer: '1.Ascending by selectors is not possible <br>2.Limitations of vertical control <br>3.No expressions <br>4.No column declaration <br>5.Pseudo-class not controlled by dynamic behavior <br>6.Rules, styles, targeting specific text not possible ',
+            answer: '<div class="text-left">1.Ascending by selectors is not possible <br>2.Limitations of vertical control <br>3.No expressions <br>4.No column declaration <br>5.Pseudo-class not controlled by dynamic behavior <br>6.Rules, styles, targeting specific text not possible.</div> ',
           },
         ],
       },
       {
         category: 'JavaScript',
+        questions: [
+          {
+            points: 100,
+            question: 'What is the use of isNaN function?',
+            answer: 'isNan function returns true if the argument is not a number otherwise it is false.',
+          },
+          {
+            points: 200,
+            question: 'What is negative infinity?',
+            answer: 'Negative Infinity is a number in JavaScript which can be derived by dividing negative number by zero.',
+          },
+          {
+            points: 300,
+            question: 'How can submit a form using JavaScript?',
+            answer: 'document.form[0].submit();',
+          },
+          {
+            points: 400,
+            question: 'What is the function of delete operator?',
+            answer: 'The functionality of delete operator is used to delete all variables and objects in a program but it cannot delete variables declared with VAR keyword.',
+          },
+        ],
+      },
+      {
+        category: 'ES6',
         questions: [
           {
             points: 100,
@@ -73,31 +98,6 @@ exports.DATA = {
             points: 400,
             question: "<p>What's being logged and name 4 new features of ES6 used in this code snippet?</p><code>let greeting = (name, msg='Hello') => `${msg}, ${name}`;<br/>console.log(greeting('Christophe');</code>",
             answer: '<p>Hello, Christophe</p><ul><li>let variables</li><li>Arrow functions</li><li>Default parameters</li><li>Template strings</li></ul>',
-          },
-        ],
-      },
-      {
-        category: 'ES6',
-        questions: [
-          {
-            points: 100,
-            question: 'Using the proposed ECMAScript module syntax, how do you load the Mortgage.js module from the current directory and make all its members available in an object named mortgage?',
-            answer: "<code>import * as mortgage from './Mortgage';</code>",
-          },
-          {
-            points: 200,
-            question: 'What are the colors of the olympic rings?',
-            answer: "<img src='images/olympic_rings.png'/>",
-          },
-          {
-            points: 300,
-            question: "What's the date of the first React commit on GitHub?",
-            answer: 'May 26th, 2013',
-          },
-          {
-            points: 400,
-            question: "What's the hex color of the React logo?",
-            answer: '#61DAFB',
           },
         ],
       },
@@ -107,54 +107,79 @@ exports.DATA = {
         category: 'HTML',
         questions: [
           {
-            points: 2000,
-            question: '<p>What part of your application does React focus on?</p><ol><li>The Model</li><li>The View</li><li>The Controller</li><li>All of the above</li></ol>',
-            answer: 'B. The View',
+            points: 100,
+            question: '<p>What are the new features provided in HTML5?</p>',
+            answer: '<div class="text-left"><h3>Some of the new features provided in HTML5 are:</h3>1. It provides support for local storage<br>2. New form controls, like calendar, date, time, email, url, search<br>3. &lt;canvas&gt; element is provided to facilitate 2D drawing<br>4. The &lt;video&gt; and &lt;audio&gt; elements are provided for media playback<br>5. New content-specific elements are provided. <b>For e.g.</b> &lt;article&gt;, &lt;header&gt;, &lt;footer&gt;, &lt;nav&gt;, &lt;section&gt;</div>',
           },
           {
             points: 200,
-            question: '_____ lets you create JavaScript objects using HTML syntax',
-            answer: 'JSX',
+            question: '_____ is the correct syntax for Doctype in HTML5?',
+            answer: '&lt;! DOCTYPE&gt;',
           },
           {
             points: 300,
-            question: 'What tool can you use to transpile JSX?',
-            answer: 'Babel',
+            question: 'Name 2 non-semantic elements',
+            answer: '&lt;div&gt;, &lt;span&gt;',
           },
           {
             points: 400,
-            question: 'React uses a _____________ to limit direct manipulation of the DOM and improve performance',
-            answer: 'Virtual DOM',
+            question: 'Name 6 Block-level Elements',
+            answer: '&lt;div&gt;, &lt;hr&gt;, &lt;table&gt;, &lt;li&gt;, &lt;ul&gt;, &lt;p&gt;, &lt;form&gt;, &lt;h1&gt;-&lt;h6&gt;, &lt;ol&gt; ...',
           },
         ],
       },
       {
         category: 'CSS',
-        questions: [
+       questions: [
           {
             points: 100,
-            question: "<p>Where can you define a component's initial state when you use the ES6 Class syntax?</p><ol><li>getInitialState()</li><li>getInitialProps()</li><li>The component's constructor</li></ol>",
-            answer: "C. The component's constructor",
+            question: 'How block elements can be centered with CSS?',
+            answer: 'With margin properties.',
           },
           {
             points: 200,
-            question: "Using npm, which package should you require/import in addition to 'react' to render a React component in an existing DOM element of your HTML file?",
-            answer: 'react-dom',
+            question: ' Explain 2 the advantages of CSS?',
+            answer: '<ul><li>Accessibility</li><li>Multiple Device Compatibility</li><li>Page will load fast</li><li>Maintenance is Easy</li><li>Offline Browsing</li></ul>',
           },
           {
             points: 300,
-            question: '<p>Which lifecycle function should you use to set default property values?</p><ol><li>getInitialState</li><li>getInitialProps</li><li>getDefaultProps</li></ol>',
-            answer: 'C. getDefaultProps',
+            question: 'What are the components of CSS style?',
+            answer: '<ul><li>Property&nbsp;</li><li>Selector</li><li>Value</li></ul>',
           },
           {
             points: 400,
-            question: 'Which lifecycle method is invoked once, immediately after the initial rendering occurs?',
-            answer: 'componentDidMount',
+            question: 'Name 3 limitations of CSS ',
+            answer: '<div class="text-left">1.Ascending by selectors is not possible <br>2.Limitations of vertical control <br>3.No expressions <br>4.No column declaration <br>5.Pseudo-class not controlled by dynamic behavior <br>6.Rules, styles, targeting specific text not possible.</div> ',
           },
         ],
       },
       {
         category: 'JavaScript',
+        questions: [
+          {
+            points: 100,
+            question: 'What is the use of isNaN function?',
+            answer: 'isNan function returns true if the argument is not a number otherwise it is false.',
+          },
+          {
+            points: 200,
+            question: 'What is negative infinity?',
+            answer: 'Negative Infinity is a number in JavaScript which can be derived by dividing negative number by zero.',
+          },
+          {
+            points: 300,
+            question: 'How can submit a form using JavaScript?',
+            answer: 'document.form[0].submit();',
+          },
+          {
+            points: 400,
+            question: 'What is the function of delete operator?',
+            answer: 'The functionality of delete operator is used to delete all variables and objects in a program but it cannot delete variables declared with VAR keyword.',
+          },
+        ],
+      },
+      {
+        category: 'ES6',
         questions: [
           {
             points: 100,
@@ -175,31 +200,6 @@ exports.DATA = {
             points: 400,
             question: "<p>What's being logged and name 4 new features of ES6 used in this code snippet?</p><code>let greeting = (name, msg='Hello') => `${msg}, ${name}`;<br/>console.log(greeting('Christophe');</code>",
             answer: '<p>Hello, Christophe</p><ul><li>let variables</li><li>Arrow functions</li><li>Default parameters</li><li>Template strings</li></ul>',
-          },
-        ],
-      },
-      {
-        category: 'ES6',
-        questions: [
-          {
-            points: 100,
-            question: 'Using the proposed ECMAScript module syntax, how do you load the Mortgage.js module from the current directory and make all its members available in an object named mortgage?',
-            answer: "<code>import * as mortgage from './Mortgage';</code>",
-          },
-          {
-            points: 200,
-            question: 'What are the colors of the olympic rings?',
-            answer: "<img src='images/olympic_rings.png'/>",
-          },
-          {
-            points: 300,
-            question: "What's the date of the first React commit on GitHub?",
-            answer: 'May 26th, 2013',
-          },
-          {
-            points: 400,
-            question: "What's the hex color of the React logo?",
-            answer: '#61DAFB',
           },
         ],
       },
