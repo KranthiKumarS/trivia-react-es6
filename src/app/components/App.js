@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Card from './src/Components/Card';
+import Card from './src/components/Card';
 import Headers from './global/Headers';
 import request from './global/request';
 import triviaData from './src/data/triviaData';
 import Danger from './global/Danger';
+import NoData from './src/components/NoData';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -141,7 +142,7 @@ export default class App extends React.Component {
         });
       });
     } else {
-      cards.push(<img className="data-error" src="base/images/data-error.gif" key={0}/>);
+      cards.push(<NoData className="data-error" src="base/images/data-error.gif" />);
     }
     return (
       <div>
