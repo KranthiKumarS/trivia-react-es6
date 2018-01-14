@@ -143,8 +143,8 @@ export default class App extends React.Component {
       });
     } else {
       cards.push(
-      <NoData className="data-error" 
-        src="base/images/data-error.gif"/>);
+        <NoData className="data-error"
+          src="base/images/data-error.gif" onImageClick={this.handleDate.bind(this)}/>);
     }
     return (
       <div>

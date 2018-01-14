@@ -4,19 +4,22 @@ class NoData extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-     
+
     };
   }
 
-  clickHandler(event) {
-    
+  clickHandler() {
+    let date = new Date();
+    this.props.onImageClick(date);
   }
 
- render() {
-    
+  render() {
     return (
       <div>
-        <img className={this.props.className} src={this.props.src} key={0} onClick={console.log('clicked me!')}/>
+        <img
+          className={this.props.className}
+          src={this.props.src} key={0}
+          onClick={this.clickHandler.bind(this)}/>
       </div>
     );
   }
