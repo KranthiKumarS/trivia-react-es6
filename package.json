@@ -9,7 +9,7 @@
   "author": "Kranthi",
   "license": "UNLICENSED",
   "private": true,
-  "homepage": "http://localhost:8080",
+  "homepage": "https://kranthikumars.github.io/trivia-react-es6/",
   "dependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^6.2.0",
