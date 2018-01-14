@@ -15,3 +15,7 @@ Trivia application is written with React and ES6
     ```
     gulp
     ```
+4. Demo
+    ```
+    https://kranthikumars.github.io/trivia-react-es6/
+    ```
