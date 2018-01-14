@@ -14,7 +14,7 @@ export default class App extends React.Component {
       windowHeight: window.innerHeight,
       data: [],
       date: this.toDay(),
-      cardStatus: false
+      cardStatus: false,
     };
   }
 
@@ -28,7 +28,7 @@ export default class App extends React.Component {
   handleDate(dateValue) {
     this.setState({
       date: this.toDay(dateValue),
-      cardStatus: false
+      cardStatus: false,
     });
   }
 
@@ -66,7 +66,7 @@ export default class App extends React.Component {
           data: date[this.state.date],
           rows: rows,
           cols: date[this.state.date].length,
-          state: this.state
+          state: this.state,
         });
       } else {
         this.setState({ data: null, rows: 1, cols: 1 });
