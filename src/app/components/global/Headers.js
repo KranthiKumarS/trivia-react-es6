@@ -31,6 +31,13 @@ class Headers extends React.Component {
     });
   }
 
+  componentWillReceiveProps(prevProps, prevState) {
+    if (prevProps.cDate) {
+      this.setState({ date: new Date() });
+      this.props.dateReset(false);
+    }
+  }
+
   render() {
     let style = {
       width: this.props.headerWidth,

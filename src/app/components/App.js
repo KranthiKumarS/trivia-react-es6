@@ -15,6 +15,7 @@ export default class App extends React.Component {
       windowHeight: window.innerHeight,
       data: [],
       date: this.toDay(),
+      cDate: false,
       cardStatus: false,
     };
   }
@@ -72,6 +73,12 @@ export default class App extends React.Component {
       } else {
         this.setState({ data: null, rows: 1, cols: 1 });
       }
+    });
+  }
+
+  resetCDate(value) {
+    this.setState({
+      cDate: value,
     });
   }
 
@@ -144,7 +151,10 @@ export default class App extends React.Component {
     } else {
       cards.push(
         <NoData className="data-error"
-          src="base/images/data-error.gif" onImageClick={this.handleDate.bind(this)}/>);
+          src="base/images/data-error.gif"
+          onImageClick={this.handleDate.bind(this)}
+          dateReset={this.resetCDate.bind(this)}
+        />);
     }
     return (
       <div>
@@ -153,6 +163,8 @@ export default class App extends React.Component {
           date={this.state.date}
           headerWidth={cardWidth}
           onSelectDate={this.handleDate.bind(this)}
+          cDate={this.state.cDate}
+          dateReset={this.resetCDate.bind(this)}
         />
         {cards}
       </div>
@@ -163,3 +175,5 @@ export default class App extends React.Component {
     return (<div>{this.cardsData()}</div>);
   }
 }
+
+App.defaultProps = { date: new Date() };

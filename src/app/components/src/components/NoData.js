@@ -11,6 +11,7 @@ class NoData extends React.Component {
   clickHandler() {
     let date = new Date();
     this.props.onImageClick(date);
+    this.props.dateReset(true);
   }
 
   render() {
