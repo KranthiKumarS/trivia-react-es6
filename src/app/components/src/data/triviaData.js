@@ -130,7 +130,7 @@ exports.DATA = {
       },
       {
         category: 'CSS',
-       questions: [
+        questions: [
           {
             points: 100,
             question: 'How block elements can be centered with CSS?',

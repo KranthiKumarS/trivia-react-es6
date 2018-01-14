@@ -2,7 +2,7 @@
   "env": {
     "browser": true,
     "jquery": true,
-    "es6": false
+    "es6": true
   },
   "globals": {
     "$": true,
@@ -14,7 +14,11 @@
   ],
   "parserOptions": {
     "ecmaVersion": 8,
-    "sourceType": "module"
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true
+    }
   },
   "rules": {
     "comma-dangle": [

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 class Modal extends React.Component {
   render() {
     // Render nothing if the "show" prop is false
-    if(!this.props.show) {
+    if (!this.props.show) {
       return null;
     }
 
@@ -17,7 +17,7 @@ class Modal extends React.Component {
       right: 0,
       backgroundColor: 'rgba(0,0,0,0.3)',
       padding: 50,
-      zIndex: 9999
+      zIndex: 9999,
     };
 
     // The modal "window"
@@ -27,7 +27,7 @@ class Modal extends React.Component {
       maxWidth: 500,
       minHeight: 300,
       margin: '0 auto',
-      padding: 30
+      padding: 30,
     };
 
     return (
@@ -49,7 +49,7 @@ class Modal extends React.Component {
 Modal.propTypes = {
   onClose: PropTypes.func.isRequired,
   show: PropTypes.bool,
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 export default Modal;
