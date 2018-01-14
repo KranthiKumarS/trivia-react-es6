@@ -4,7 +4,10 @@ import * as audio from './audio';
 class Card extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { view: 'points', completed: false, src: 'base/images/dyk.svg' };
+    this.state = { 
+        view: 'points', 
+        completed: this.props.cardStatus, src: 'base/images/dyk.svg'
+    };
   }
 
   clickHandler(event) {
@@ -33,6 +36,10 @@ class Card extends React.Component {
     if (event.propertyName === 'width') {
       this.setState({ flipping: false });
     }
+  }
+
+  componentWillReceiveProps(props) {
+    this.setState({completed: props.cardStatus});
   }
 
   render() {
