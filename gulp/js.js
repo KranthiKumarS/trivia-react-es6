@@ -58,5 +58,6 @@ gulp.task('js:base', () => {
     .pipe(gulp.dest('src/base/compiled'))
     .pipe(rename('base.min.js'))
     .pipe(uglify())
-    .pipe(gulp.dest('build/base/js'));
+    .pipe(gulp.dest('build/base/js'))
+    .pipe(gulp.dest('docs/base/js'));
 });

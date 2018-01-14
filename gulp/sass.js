@@ -107,7 +107,8 @@ gulp.task('sass:components', () => {
     .pipe(gulp.dest('src/components/compiled'))
     .pipe(rename('styles.min.css'))
     .pipe(clean({ compatibility: '*' }))
-    .pipe(gulp.dest('build/base/css'));
+    .pipe(gulp.dest('build/base/css'))
+    .pipe(gulp.dest('docs/base/css'));
 });
 
 

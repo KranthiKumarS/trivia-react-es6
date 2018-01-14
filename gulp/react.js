@@ -71,8 +71,7 @@ var conf = {
   srcJs:    'src/app',
   destName: 'app.js',
   destJs:   'build/base/js',
-
-  
+  destJs:   'docs/base/js',
 };
 
 function compile() {
@@ -90,9 +89,6 @@ function compile() {
       .pipe(sourcemaps.write('./'))
       .pipe(gulp.dest(conf.destJs));
   }
-
-
-
   rebundle();
 }
 

@@ -42,5 +42,6 @@ gulp.task('partials:base', () => {
         tagName: 'htmlPartial',
         variablePrefix: '@@'
     }))
-    .pipe(gulp.dest('build'));
+    .pipe(gulp.dest('build'))
+    .pipe(gulp.dest('docs'));
 });

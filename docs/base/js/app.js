@@ -25142,6 +25142,8 @@ var _request = require('./global/request');
 
 var _request2 = _interopRequireDefault(_request);
 
+var _Helper = require('./global/Helper');
+
 var _triviaData = require('./src/data/triviaData');
 
 var _triviaData2 = _interopRequireDefault(_triviaData);
@@ -25174,7 +25176,8 @@ var App = function (_React$Component) {
       windowWidth: window.innerWidth,
       windowHeight: window.innerHeight,
       data: [],
-      date: _this.toDay(),
+      date: (0, _Helper.toDay)(),
+      cDate: false,
       cardStatus: false
     };
     return _this;
@@ -25192,30 +25195,30 @@ var App = function (_React$Component) {
     key: 'handleDate',
     value: function handleDate(dateValue) {
       this.setState({
-        date: this.toDay(dateValue),
+        date: (0, _Helper.toDay)(dateValue),
         cardStatus: false
       });
     }
-  }, {
-    key: 'toDay',
-    value: function toDay(newDate) {
-      var todayDate = new Date();
-      if (newDate !== undefined) {
-        todayDate = new Date(newDate);
-      }
-      var dd = todayDate.getDate();
-      var mm = todayDate.getMonth() + 1; // January is 0!
-      var yyyy = todayDate.getFullYear();
 
-      if (dd < 10) {
-        dd = '0' + dd;
-      }
-      if (mm < 10) {
-        mm = '0' + mm;
-      }
-      todayDate = dd + '/' + mm + '/' + yyyy;
-      return todayDate;
-    }
+    // toDay(newDate) {
+    //   let todayDate = new Date();
+    //   if (newDate !== undefined) {
+    //     todayDate = new Date(newDate);
+    //   }
+    //   let dd = todayDate.getDate();
+    //   let mm = todayDate.getMonth() + 1; // January is 0!
+    //   let yyyy = todayDate.getFullYear();
+
+    //   if (dd < 10) {
+    //     dd = '0' + dd;
+    //   }
+    //   if (mm < 10) {
+    //     mm = '0' + mm;
+    //   }
+    //   todayDate = dd + '/' + mm + '/' + yyyy;
+    //   return todayDate;
+    // }
+
   }, {
     key: 'cardData',
     value: function cardData(dd) {
@@ -25240,6 +25243,13 @@ var App = function (_React$Component) {
         } else {
           _this2.setState({ data: null, rows: 1, cols: 1 });
         }
+      });
+    }
+  }, {
+    key: 'resetCDate',
+    value: function resetCDate(value) {
+      this.setState({
+        cDate: value
       });
     }
   }, {
@@ -25315,7 +25325,11 @@ var App = function (_React$Component) {
           });
         });
       } else {
-        cards.push(_react2.default.createElement(_NoData2.default, { className: 'data-error', src: 'base/images/data-error.gif' }));
+        cards.push(_react2.default.createElement(_NoData2.default, { className: 'data-error',
+          src: 'base/images/data-error.gif',
+          onImageClick: this.handleDate.bind(this),
+          dateReset: this.resetCDate.bind(this)
+        }));
       }
       return _react2.default.createElement(
         'div',
@@ -25324,7 +25338,9 @@ var App = function (_React$Component) {
           data: this.state.data,
           date: this.state.date,
           headerWidth: cardWidth,
-          onSelectDate: this.handleDate.bind(this)
+          onSelectDate: this.handleDate.bind(this),
+          cDate: this.state.cDate,
+          dateReset: this.resetCDate.bind(this)
         }),
         cards
       );
@@ -25345,7 +25361,10 @@ var App = function (_React$Component) {
 
 exports.default = App;
 
-},{"./global/Danger":198,"./global/Headers":199,"./global/request":201,"./src/components/Card":202,"./src/components/NoData":203,"./src/data/triviaData":205,"react":196,"react-dom":40}],198:[function(require,module,exports){
+
+App.defaultProps = { date: new Date() };
+
+},{"./global/Danger":198,"./global/Headers":199,"./global/Helper":200,"./global/request":202,"./src/components/Card":203,"./src/components/NoData":204,"./src/data/triviaData":206,"react":196,"react-dom":40}],198:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -25467,6 +25486,14 @@ var Headers = function (_React$Component) {
       });
     }
   }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(prevProps, prevState) {
+      if (prevProps.cDate) {
+        this.setState({ date: new Date() });
+        this.props.dateReset(false);
+      }
+    }
+  }, {
     key: 'render',
     value: function render() {
       var style = {
@@ -25519,7 +25546,35 @@ var Headers = function (_React$Component) {
 
 exports.default = Headers;
 
-},{"./Modal":200,"react":196,"react-calendar/dist/entry.nostyle":31}],200:[function(require,module,exports){
+},{"./Modal":201,"react":196,"react-calendar/dist/entry.nostyle":31}],200:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.toDay = toDay;
+// Covert to date dd/mm/yyy
+
+function toDay(newDate) {
+  var todayDate = new Date();
+  if (newDate !== undefined) {
+    todayDate = new Date(newDate);
+  }
+  var dd = todayDate.getDate();
+  var mm = todayDate.getMonth() + 1; // January is 0!
+  var yyyy = todayDate.getFullYear();
+
+  if (dd < 10) {
+    dd = '0' + dd;
+  }
+  if (mm < 10) {
+    mm = '0' + mm;
+  }
+  todayDate = dd + '/' + mm + '/' + yyyy;
+  return todayDate;
+}
+
+},{}],201:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -25615,7 +25670,7 @@ Modal.propTypes = {
 
 exports.default = Modal;
 
-},{"prop-types":12,"react":196}],201:[function(require,module,exports){
+},{"prop-types":12,"react":196}],202:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -25652,7 +25707,7 @@ exports.default = function (opts) {
   });
 };
 
-},{}],202:[function(require,module,exports){
+},{}],203:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -25784,7 +25839,7 @@ var Card = function (_React$Component) {
 
 exports.default = Card;
 
-},{"./audio":204,"react":196}],203:[function(require,module,exports){
+},{"./audio":205,"react":196}],204:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -25819,15 +25874,21 @@ var NoData = function (_React$Component) {
 
   _createClass(NoData, [{
     key: 'clickHandler',
-    value: function clickHandler(event) {}
+    value: function clickHandler() {
+      var date = new Date();
+      this.props.onImageClick(date);
+      this.props.dateReset(true);
+    }
   }, {
     key: 'render',
     value: function render() {
-
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement('img', { className: this.props.className, src: this.props.src, key: 0, onClick: console.log('clicked me!') })
+        _react2.default.createElement('img', {
+          className: this.props.className,
+          src: this.props.src, key: 0,
+          onClick: this.clickHandler.bind(this) })
       );
     }
   }]);
@@ -25837,7 +25898,7 @@ var NoData = function (_React$Component) {
 
 exports.default = NoData;
 
-},{"react":196}],204:[function(require,module,exports){
+},{"react":196}],205:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -25861,7 +25922,7 @@ var stop = exports.stop = function stop(sound) {
   }
 };
 
-},{}],205:[function(require,module,exports){
+},{}],206:[function(require,module,exports){
 'use strict';
 
 exports.DATA = {
@@ -26023,7 +26084,7 @@ exports.DATA = {
   }]
 };
 
-},{}],206:[function(require,module,exports){
+},{}],207:[function(require,module,exports){
 'use strict';
 
 var _react = require('react');
@@ -26043,6 +26104,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var app = document.getElementById('app');
 _reactDom2.default.render(_react2.default.createElement(_App2.default, null), app);
 
-},{"./components/App":197,"react":196,"react-dom":40}]},{},[206])
+},{"./components/App":197,"react":196,"react-dom":40}]},{},[207])
 
 //# sourceMappingURL=app.js.map
