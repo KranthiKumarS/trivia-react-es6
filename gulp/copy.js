@@ -42,33 +42,36 @@ gulp.task('copy', ['copy:images', 'copy:fonts', 'copy:vendor']);
 // -------------------------------------
 
 gulp.task('clean:images', () => {
-  return gulp.src('build/base/images', { read: false })
+  return gulp.src(['build/base/images', 'docs/base/images'], { read: false })
     .pipe(clean({ force: true }));
 });
 
 gulp.task('copy:images', ['clean:images'], () => {
   return gulp.src('src/base/images/**/*')
-    .pipe(gulp.dest('build/base/images'));
+    .pipe(gulp.dest('build/base/images'))
+    .pipe(gulp.dest('docs/base/images'));
 });
 
 gulp.task('clean:fonts', () => {
-  return gulp.src('build/base/fonts', { read: false })
+  return gulp.src(['build/base/fonts', 'docs/base/fonts'], { read: false })
     .pipe(clean({ force: true }));
 });
 
 gulp.task('copy:fonts', ['clean:fonts'], () => {
   return gulp.src('src/base/fonts/**/*')
-    .pipe(gulp.dest('build/base/fonts'));
+    .pipe(gulp.dest('build/base/fonts'))
+    .pipe(gulp.dest('docs/base/fonts'));
 });
 
 gulp.task('clean:vendor', () => {
-  return gulp.src('build/vender', { read: false })
+  return gulp.src(['build/vendor', 'docs/vendor'], { read: false })
     .pipe(clean({ force: true }));
 });
 
 gulp.task('copy:vendor', ['clean:vendor'], () => {
   return gulp.src('src/vendor/**/*')
-    .pipe(gulp.dest('build/vendor'));
+    .pipe(gulp.dest('build/vendor'))
+    .pipe(gulp.dest('docs/vendor'));
 });
 
 
