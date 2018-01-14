@@ -4,6 +4,7 @@ import Card from './src/Components/Card';
 import Headers from './global/Headers';
 import request from './global/request';
 import triviaData from './src/data/triviaData';
+import Danger from './global/Danger';
 
 export default class App extends React.Component {
 
@@ -12,7 +13,8 @@ export default class App extends React.Component {
         this.state = {
             windowWidth: window.innerWidth,
             windowHeight: window.innerHeight,
-            data: []
+            data: [],
+            date: this.today(),
         };
     }
 
@@ -23,9 +25,18 @@ export default class App extends React.Component {
         });
     }
 
-    today() {
-        let today = new Date(),
-            dd = today.getDate(),
+    handleDate(dateValue) {
+        this.setState({
+            date: this.today(dateValue),
+        });
+    }
+
+    today(newDate) {
+        let today = new Date();
+        if(newDate !== undefined){
+            today = new Date(newDate);
+        }
+        let dd = today.getDate(),
             mm = today.getMonth()+1, //January is 0!
             yyyy = today.getFullYear();
 
@@ -39,25 +50,27 @@ export default class App extends React.Component {
         return today;
     }
 
+    cardData(dd) {
+        let rows = 0,
+        datenow = dd;
+        
+        triviaData.DATA.date.forEach(date => {
+            if(date[this.state.date] !== undefined) {
+                date[this.state.date].forEach(category => {
+                    if (category.questions.length > rows) {
+                        rows = category.questions.length;
+                    }
+                });
+                this.setState({data: date[this.state.date], rows: rows, cols: date[this.state.date].length});
+            } else {
+                this.setState({data: null, rows: 1, cols: 1});
+            }
+        });
+    }
+
     componentDidMount() {
         window.addEventListener('resize', this.handleResize.bind(this));
-        let rows = 0,
-        datenow = this.today();
-        triviaData.DATA.date.forEach(date => {
-            date[datenow].forEach(category => {
-                if (category.questions.length > rows) {
-                    rows = category.questions.length;
-                }
-            });
-            this.setState({data: date[datenow], rows: rows, cols: date[datenow].length});
-        });
-                
-        // triviaData.DATA.forEach(category => {
-        //     if (category.questions.length > rows) {
-        //         rows = category.questions.length;
-        //     }
-        // });
-        // this.setState({data: triviaData.DATA, rows: rows, cols: triviaData.DATA.length});
+        this.cardData(this.state.date);
     }
 
     /*
@@ -87,29 +100,43 @@ export default class App extends React.Component {
         });
     }
     */
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.date !== this.state.date) {
+            this.cardData(this.state.date);
+        }
+      }
 
     componentWillUnmount() {
         window.removeEventListener('resize', this.handleResize);
     }
 
-    render() {
+    cardsData() {
         let headerHeight = this.state.windowWidth > 640 ? 60 : 32,
             cardWidth = this.state.windowWidth / this.state.cols,
             cardHeight = (this.state.windowHeight - headerHeight) / this.state.rows,
             cards = [];
 
-        this.state.data.forEach((category, categoryIndex) => {
-            let left = categoryIndex * cardWidth;
-            category.questions.forEach((question, questionIndex) => {
-                cards.push(<Card left={left} top={questionIndex * cardHeight + headerHeight} height={cardHeight} width={cardWidth} question={question} key={categoryIndex + '-' + questionIndex}/>);
-            })
-        });
-        return (
-            <div>
-                <Headers data={this.state.data} headerWidth={cardWidth}/>
-                {cards}
-            </div>
-        );
+            if(this.state.data !== null) {
+                this.state.data.forEach((category, categoryIndex) => {
+                    let left = categoryIndex * cardWidth;
+                    category.questions.forEach((question, questionIndex) => {
+                        cards.push(
+                        <Card left={left} top={questionIndex * cardHeight + headerHeight} height={cardHeight} width={cardWidth} question={question} key={categoryIndex + '-' + questionIndex}/>
+                        );
+                    });
+                });
+            } else {
+                cards.push(<img className="data-error" src="base/images/data-error.gif" key={0}/>);
+            }
+            return (
+                <div>
+                    <Headers data={this.state.data} date={this.state.date} headerWidth={cardWidth} onSelectDate={this.handleDate.bind(this)}/>
+                    {cards}
+                </div>
+            );
     }
 
+    render() {
+        return (<div>{this.cardsData()}</div>);
+    }
 };

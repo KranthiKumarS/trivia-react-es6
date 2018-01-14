@@ -27,7 +27,10 @@ class Card extends React.Component {
     }
 
     getLabelBack() {
-        return {__html: this.state.view === 'question' ? this.props.question.question : this.props.question.answer};
+        setTimeout(() => {
+            return {__html: this.state.view === 'question' ? this.props.question.question : this.props.question.answer};
+        }, 1000);
+        
     }
 
     transitionEndHandler(event) {

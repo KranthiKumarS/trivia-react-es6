@@ -53,6 +53,7 @@
     "prop-types": "^15.6.0",
     "react": "^0.14.6",
     "react-addons-update": "^15.6.2",
+    "react-calendar": "^2.10.0",
     "react-dom": "^0.14.6",
     "react-editable-div": "0.0.4",
     "require-dir": "^0.3.2",
