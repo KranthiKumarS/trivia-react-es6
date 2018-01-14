@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Card from './src/components/Card';
 import Headers from './global/Headers';
 import request from './global/request';
+import { toDay } from './global/Helper';
 import triviaData from './src/data/triviaData';
 import Danger from './global/Danger';
 import NoData from './src/components/NoData';
@@ -14,7 +15,7 @@ export default class App extends React.Component {
       windowWidth: window.innerWidth,
       windowHeight: window.innerHeight,
       data: [],
-      date: this.toDay(),
+      date: toDay(),
       cDate: false,
       cardStatus: false,
     };
@@ -29,29 +30,29 @@ export default class App extends React.Component {
 
   handleDate(dateValue) {
     this.setState({
-      date: this.toDay(dateValue),
+      date: toDay(dateValue),
       cardStatus: false,
     });
   }
 
-  toDay(newDate) {
-    let todayDate = new Date();
-    if (newDate !== undefined) {
-      todayDate = new Date(newDate);
-    }
-    let dd = todayDate.getDate();
-    let mm = todayDate.getMonth() + 1; // January is 0!
-    let yyyy = todayDate.getFullYear();
+  // toDay(newDate) {
+  //   let todayDate = new Date();
+  //   if (newDate !== undefined) {
+  //     todayDate = new Date(newDate);
+  //   }
+  //   let dd = todayDate.getDate();
+  //   let mm = todayDate.getMonth() + 1; // January is 0!
+  //   let yyyy = todayDate.getFullYear();
 
-    if (dd < 10) {
-      dd = '0' + dd;
-    }
-    if (mm < 10) {
-      mm = '0' + mm;
-    }
-    todayDate = dd + '/' + mm + '/' + yyyy;
-    return todayDate;
-  }
+  //   if (dd < 10) {
+  //     dd = '0' + dd;
+  //   }
+  //   if (mm < 10) {
+  //     mm = '0' + mm;
+  //   }
+  //   todayDate = dd + '/' + mm + '/' + yyyy;
+  //   return todayDate;
+  // }
 
   cardData(dd) {
     let rows = 0;
